@@ -47,7 +47,8 @@ public class UserRepository extends BaseRepository {
 			statement.setDate(4, user.getBirthday());
 			statement.setString(5, user.getGender());
 			statement.setString(6, user.getPlatform());
-			statement.setString(7, user.getCommunitiesOfInterest());
+			String joinedCommunities = String.join(",", user.getCommunitiesOfInterest());
+			statement.setString(7, joinedCommunities);
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

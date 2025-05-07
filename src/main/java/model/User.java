@@ -2,7 +2,6 @@ package model;
 
 import java.io.Serializable;
 import java.sql.Date;
-import java.util.List;
 
 public class User implements Serializable {
 
@@ -15,7 +14,7 @@ public class User implements Serializable {
 	private String email;
 	private String gender;
 	private String platform;
-	private String communitiesOfInterest;
+	private String[] communitiesOfInterest;
 	private String profilePicture;
 
 	public User() {
@@ -78,11 +77,11 @@ public class User implements Serializable {
 		this.platform = platform;
 	}
 	
-	public String getCommunitiesOfInterest() {
+	public String[] getCommunitiesOfInterest() {
 		return communitiesOfInterest;
 	}
 	
-	public void setCommunitiesOfInterest(String communitiesOfInterest) {
+	public void setCommunitiesOfInterest(String[] communitiesOfInterest) {
 		this.communitiesOfInterest = communitiesOfInterest;
 	}
 	

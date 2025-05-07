@@ -45,12 +45,10 @@
 		</select>
 		
 		<label for="communitiesOfInterest">Communities that interest you:</label>
-		<select id="communitiesOfInterest" name="communitiesOfInterest" multiple size="4">
-			<option value="minecraft">Minecraft</option>
-			<option value="sims">Sims</option>
-			<option value="fifa">Fifa</option>
-			<option value="callofduty">Call of Duty</option>
-		</select>
+		<input type="checkbox" name="communitiesOfInterest" value="minecraft"> Minecraft
+		<input type="checkbox" name="communitiesOfInterest" value="sims"> Sims
+		<input type="checkbox" name="communitiesOfInterest" value="fifa"> Fifa
+		<input type="checkbox" name="communitiesOfInterest" value="callofduty"> Call of Duty
 		
 		<button type="submit">Send</button>
 		
