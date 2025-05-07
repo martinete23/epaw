@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Users List (Async/Await)</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 60%;
+            margin: 20px auto;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #aaa;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        #error {
+            color: red;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<h2 style="text-align: center;">List of Users (via Fetch API with Async/Await)</h2>
+
+<div id="error"></div>
+
+<table id="userTable" style="display: none;">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Password</th>
+        </tr>
+    </thead>
+    <tbody id="userBody">
+        <!-- Rows will be dynamically added here -->
+    </tbody>
+</table>
+
+<script>
+    async function loadUsers() {
+        const errorDiv = document.getElementById("error");
+        const table = document.getElementById("userTable");
+        const body = document.getElementById("userBody");
+
+        try {
+            const response = await fetch('ListUsersAJAX'); 
+            if (!response.ok) {
+                throw new Error("Failed to fetch users.");
+            }
+
+            const users = await response.json();
+
+            if (users.length === 0) {
+                errorDiv.innerText = "No users found.";
+                return;
+            }
+
+            users.forEach(user => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${user.id}</td>
+                    <td>${user.name}</td>
+                    <td>${user.password}</td>
+                `;
+                body.appendChild(row);
+            });
+
+            table.style.display = "table";
+
+        } catch (err) {
+            errorDiv.innerText = err.message;
+        }
+    }
+
+    // Run on page load
+    window.addEventListener("DOMContentLoaded", loadUsers);
+</script>
+
+</body>
+</html>

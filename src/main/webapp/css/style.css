@@ -1,0 +1,7 @@
+@charset "UTF-8";
+input:valid {
+	border-left: 4px solid green;
+}
+input:invalid {
+	border-left: 4px solid red;
+}
